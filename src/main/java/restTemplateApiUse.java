@@ -18,7 +18,7 @@ public class restTemplateApiUse {
         ResponseEntity responseEntity = restTemplate.exchange(URL, HttpMethod.GET, entity, String.class);
 
         System.out.println("Response entity header: " + responseEntity.getHeaders() + "\n");
-        String cookie  = String.valueOf(responseEntity.getHeaders().get("Set-Cookie")).replaceAll("\\[|\\]", "");
+        String cookie  = String.valueOf(responseEntity.getHeaders().get("Set-Cookie")).replaceAll("^.|.$", "");
         System.out.println("Cookie: " + cookie + "\n");
 
         headers.set("Cookie", cookie);
